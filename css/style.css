@@ -1,0 +1,190 @@
+.content-carousel{
+    width:95%; 
+    margin: 0 auto; 
+    padding-top:10px;
+}
+
+
+.collapsible-header.color{
+	color: #444;
+}
+
+.container{
+    width: 95%;
+}
+
+.carousel-position-left{	
+	float: left;  
+    right: 0px;
+}   
+
+.carousel-fix{
+	position: absolute;
+    background-color: #FFF;
+    z-index: 10000000000;
+    width: 5%;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    opacity: 0.1;
+    filter: alpha(opacity=10); /* For IE8 and earlier */
+}
+
+.carousel-fix:hover {
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+.menu-font-color{
+	color: #0DA574 ;
+}
+
+div.content-carousel{
+	margin-top: 10px;
+}
+
+.page-footer{
+    background-color:#001F3F !important; 
+}
+
+nav{
+    background-color:#0DA574 !important; 
+}
+
+/* label color */
+.input-field label {
+ color: #083358;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+ color: #083358;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+ border-bottom: 1px solid #083358;
+ box-shadow: 0 1px 0 0 #083358;
+}
+/* valid color */
+.input-field input[type=text].valid {
+ border-bottom: 1px solid #083358;
+ box-shadow: 0 1px 0 0 #083358;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+ border-bottom: 1px solid #083358;
+ box-shadow: 0 1px 0 0 #083358;
+}
+
+.input-field input[type=email]:focus + label {
+ color: #083358;
+}
+/* label underline focus color */
+.input-field input[type=email]:focus {
+ border-bottom: 1px solid #083358;
+ box-shadow: 0 1px 0 0 #083358;
+}
+/* valid color */
+.input-field input[type=email].valid {
+ border-bottom: 1px solid #083358;
+ box-shadow: 0 1px 0 0 #083358;
+}
+/* invalid color */
+.input-field input[type=email].invalid {
+ border-bottom: 1px solid #083358;
+ box-shadow: 0 1px 0 0 #083358;
+}
+
+
+.input-field textarea.materialize-textarea:focus + label {
+ color: #083358;
+}
+/* label underline focus color */
+.input-field textarea.materialize-textarea:focus {
+ border-bottom: 1px solid #083358;
+ box-shadow: 0 1px 0 0 #083358;
+}
+/* valid color */
+.input-field textarea.materialize-textarea.valid {
+ border-bottom: 1px solid #083358;
+ box-shadow: 0 1px 0 0 #083358;
+}
+/* invalid color */
+.input-field textarea.materialize-textarea.invalid {
+ border-bottom: 1px solid #083358;
+ box-shadow: 0 1px 0 0 #083358;
+}
+
+/* icon prefix focus color */
+.input-field .prefix.active {
+ color: #083358;
+}
+
+.card-content{
+    max-height: 90% !important;
+    overflow: auto !important;
+}   
+
+div.off-margin{
+    margin: 0px;
+}   
+
+.btnadd{
+    left: 45% !important;
+}  
+
+.pos-input{
+    width: 46% !important;
+}
+
+.img-error{
+        width: 100% !important;
+}
+
+.social-text{
+    position: static;
+    float: left;
+    margin-top: 7px;
+    padding-top: 2px;
+}
+
+.panel-icon{
+    box-shadow: 0 0px 0px 0 rgba(0,0,0,0.0),0 0px 0px 0 rgba(0,0,0,0.0);
+    transition: box-shadow .25s;
+    padding: 10px;
+    margin: 0;
+    border-radius: 0;
+    background-color: #001F3F; 
+}
+
+img.social-icon{
+    width: 60px !important;
+}
+
+@media (max-width: 990px){
+	.carousel-fix{
+		display: none;
+	}
+
+	.content-carousel{
+    	width:100%; 
+    	padding:0px;
+    	margin: 0;
+	}
+
+    .btnadd{
+        left: -20px;
+    } 
+} 
+
+
+@media (min-width: 1000px){
+    .img-error{
+        width: 80% !important;
+    }
+
+    .activo{
+        padding-left: 60px;
+        margin-left: 80px;
+        display: flex !important;        
+    }    
+} 

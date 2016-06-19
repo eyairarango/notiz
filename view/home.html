@@ -1,0 +1,108 @@
+<div class="container" ng-controller="calculo">
+	<div class="row">
+		<div class="col s12">
+			<div id="screenf" class="{{screen}}">
+				<div class="card large">
+					<div class="activator" id="active">	
+					</div>
+				    <div class="card-content">
+					      <span class="card-title activator grey-text text-darken-4">Calcular.</span>					       
+					      <div class="divider"></div>
+					      <form class="col s12" name="notasForm">
+						      <div class="row" ng-repeat="x in products">
+						        <div class="input-field col s5 m5 l6" style="width: 46%;">
+						          <input id="first_name" type="text" ng-model="notas.nota[$index]" name="nota[$index]" class="validate nota-{{$index}}" required onKeypress="if (event.keyCode < 47|| event.keyCode > 53) event.returnValue = false;"
+						           onchange="range = /^\d{1,2}(\.\d{1,3})?$/;hundred = /^5$/;if(!(range.test(this.value) || hundred.test(this.value)))alert('El rango debe ser entre 0 y 5');">
+						          <label for="first_name">Nota</label>						          
+						        </div>
+						        <div class="input-field col s5 m5 l6" style="width: 46%;">
+						          <input id="last_name" type="text" ng-model="notas.porcentaje[$index]" name="porcentaje[$index]" class="validate porcentaje-{{$index}}" required minlength="0" maxlength="3" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+						           onchange="range = /^\d{1,2}(\.\d{1,3})?$/;hundred = /^100$/;if(!(range.test(this.value) || hundred.test(this.value)))alert('El rango debe ser entre 0 y 100%');">					
+						          <label for="first_name">Porcentaje</label>
+						        </div>	
+						        <div class="input-field col s0 m0 l0" ng-init="id=$index" style="padding-top: 15px;">				        
+						        	<span ng-click="removeItem($index,id)" style="cursor:pointer;"><i class="material-icons waves-effect waves-light red-text text-darken-2">delete_forever</i></span>
+					        	</div>
+						      </div>
+					      </form>	
+				    </div>
+				    <div class="card-reveal">
+					  	<span class="card-title grey-text text-darken-4">Error<i class="material-icons right waves-effect waves-light red-text text-darken-2" ng-click="error.estado=false">close</i></span>
+					  	<div class="divider"></div>
+					  	<div class="row">
+					  		<div class="col s12 m9 l7 offset-l3">
+					  			<div class="card-image">
+				      				<img class="responsive-img img-error" ng-src="{{config.body.imgerror}}" style="border-radius: 50%;">
+				    			</div>
+					  		</div>
+					  	</div>
+					  	<div class="row" ng-show="error.estado">
+					  		<div class="col s12 valign-wrapper">					  		
+					  			<section>
+					  				<article>
+					  					<strong class="valign red-text text-darken-2" style="font-size: 20px;">{{error.mensaje}}</strong> 
+					  				</article>
+					  			</section>
+					  		</div>
+					  	</div>
+					  	
+					</div>	
+				    <div class="card-action">
+				    	<div class="row off-margin">
+							<div class="col s12 off-margin">
+								<div class="row off-margin">				      
+									<div class="col s9">
+										<div class="horizontal">
+									    	<button class="btn waves-effect waves-light" type="submit" ng-click="save(notas)" name="action" style="background-color: #0DA574; margin-top: 6px;">Calular
+											    <i class="material-icons right">send</i>
+										  	</button>
+								    	</div>
+									</div>
+									<div class="col s3 off-margin">
+						    			<div class="horizontal">
+									    	<a class="btn btn-floating btn-large btnadd waves-effect waves-light page-footer" ng-click="addItem()">
+									      		<i class="large material-icons">add</i>
+									    	</a>
+								    	</div>
+							    	</div>
+						    	</div>
+					    	</div>
+				  		</div>
+				    </div>			    
+				</div>			
+			</div>
+		</div>
+	</div>
+
+	<div id="modal" class="modal">
+	    <div class="modal-content">
+	      <div class="col s12 m8 offset-m2 l6 offset-l3">
+	        <div class="card-panel grey lighten-5 z-depth-1">
+	          <div class="row valign-wrapper">
+	            <div class="col s2">
+	              <img ng-src="{{result.imagen}}" alt="" class="circle responsive-img">
+	            </div>
+	            <div class="col s10">
+	              <span class="black-text">
+              		<p><h4>{{result.mensaje1}}</h4></p>
+	      			<p>{{result.mensaje2}} {{result.valor}} en el {{result.porcentaje_final}}%</p>
+	      			<p>{{result.mensaje3}}</p>
+	              </span>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+

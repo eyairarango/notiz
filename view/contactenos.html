@@ -1,0 +1,44 @@
+<div class="container" ng-controller="calculo">
+  <div class="row">
+    <div class="col s12">
+      <div id="screenf" class="{{screen}}">
+        <div class="card large">
+          <div class="activator" id="active"> 
+          </div>
+          <form class="col s12" name="notasForm" action="">
+            <div class="card-content" style="overflow: hidden !important;">
+                <span class="card-title activator grey-text text-darken-4">Fórmulario de contacto.</span>                
+                <div class="divider"></div>                
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input  id="{{config.body.form.formContacto.name.id}}" type="{{config.body.form.formContacto.name.type}}" name="{{config.body.form.formContacto.name.name}}" class="validate" required="">
+                    <label for="{{config.body.form.formContacto.name.id}}">Nombre</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="{{config.body.form.formContacto.correo.id}}" type="{{config.body.form.formContacto.correo.type}}" name="{{config.body.form.formContacto.correo.name}}" class="validate" required="">
+                    <label for="{{config.body.form.formContacto.correo.id}}">Correo</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input  id="{{config.body.form.formContacto.asunto.id}}" type="{{config.body.form.formContacto.asunto.type}}" name="{{config.body.form.formContacto.asunto.name}}" class="validate" required="">
+                    <label for="{{config.body.form.formContacto.asunto.id}}">Asunto</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="{{config.body.form.formContacto.mensaje.id}}" class="materialize-textarea truncate" type="{{config.body.form.formContacto.mensaje.type}}" name="{{config.body.form.formContacto.mensaje.name}}" required=""></textarea>
+                    <label for="{{config.body.form.formContacto.mensaje.id}}">Escriba su mensaje</label>
+                  </div>
+                </div>
+                <div class="divider"></div>
+                <button id="{{config.body.form.formContacto.boton.id}}" class="btn waves-effect waves-light" type="{{config.body.form.formContacto.boton.type}}" ng-click="save(notas)" name="{{config.body.form.formContacto.boton.name}}" style="background-color: #0DA574; margin-top: 6px;">Calular
+                    <i class="material-icons right">send</i>
+                </button>
+              </div>            
+          </form>          
+        </div>      
+      </div>
+    </div>
+  </div>
+</div>

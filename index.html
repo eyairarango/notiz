@@ -1,0 +1,115 @@
+ <!DOCTYPE html>
+  <html ng-app="aplication">
+    <head>
+      <meta charset="UTF-8">
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body ng-controller="appCtrl" class="grey lighten-2">    
+      <header>
+        <nav role="navigation">          
+          <div class="nav-wrapper container"><a id="logo-container" ng-click="valor(true)" href="{{config.header.menu.title.urlt}}" class="brand-logo">{{config.header.menu.title.namet}}</a>
+            <ul class="right hide-on-med-and-down" ng-show="config.header.sideNav">
+              <li><a ng-click="valor(false)" href="{{config.header.menu.item1.url1}}">{{config.header.menu.item1.name1}}</a></li>              
+                <!-- Dropdown Trigger -->
+              <li><a class="dropdown-button" href="#" data-activates="dropvalues">{{config.header.menu.item2.named}}<i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>                 
+            <ul id="nav-mobile" class="side-nav">
+              <li><a ng-click="valor(false)" href="{{config.header.menu.item1.url1}}">{{config.header.menu.item1.name1}}</a></li>              
+              <!-- Dropdown Trigger -->
+              <li>
+                <ul class="collapsible" data-collapsible="accordion">
+                  <li>
+                    <div class="collapsible-header color">{{config.header.menu.item2.named}}<i class="material-icons right">arrow_drop_down</i></div>
+                    <div class="collapsible-body">
+                      <ul>
+                        <div ng-repeat="attr in config.header.menu.drop">                        
+                          <li><a href="{{attr.url}}">{{attr.name}}</a></li>
+                          <li class="divider"></li>                      
+                        </div>
+                      </ul>
+                    </div>
+                  </li>                          
+                </ul>
+              </li>
+            </ul>
+            <a href="#" data-activates="nav-mobile" ng-click="sideNav(false)" class="button-collapse activo"><i class="material-icons">menu</i></a>
+          </div>
+        </nav>
+        <ul id="dropvalues" class="dropdown-content">
+          <div ng-repeat="attr in config.header.menu.drop">                        
+            <li><a href="{{attr.url}}">{{attr.name}}</a></li>
+            <li class="divider"></li>                      
+          </div>
+        </ul>             
+    </header>
+    <div ng-show="val" class="content-carousel">
+      <div class="slider z-depth-3">                
+        <div class="carousel-position-left carousel-fix waves-effect waves-light valign-wrapper"><div><i class="medium material-icons">navigate_next</i></div></div>
+        <div class="carousel-position-right carousel-fix waves-effect waves-light valign-wrapper"><i class="medium material-icons">navigate_before</i></div>               
+        <ul class="slides">      
+          <li ng-repeat="caru in config.body.carousel">          
+            <img ng-src='{{caru.img}}' class="img-carousel"> <!-- random image -->
+            <div class="caption center-align">
+              <h3>{{caru.text1}}</h3>
+              <h5 class="light grey-text text-lighten-3">{{caru.text2}}</h5>
+            </div>
+          </li> 
+        </ul>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div ng-view class="white"></div> 
+
+      <footer class="page-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col l6 s12">
+              <h3 class="white-text"><strong>{{config.header.menu.title.namet}}</strong></h3>
+              
+              <p class="grey-text text-lighten-4">
+                <h4 class="white-text">Calcula cuanto falta para que ganes tu materia.</h4>
+              </p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+              <h5 class="white-text">Redes</h5>              
+                <div class="card-panel valign-wrapper panel-icon" ng-repeat="red in config.footer.links">                                   
+                  <a href="{{red.link}}" target="_blank">
+                      <img class=" responsive-img circle col s4 social-icon" ng-src="{{red.img}}"> <strong class="social-text">{{red.text}}</strong>
+                  </a>
+                </div> 
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <div class="container">
+          © 2016 Copyright {{config.footer.autor}} ({{config.footer.email}})        
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Modal Structure -->
+  
+
+    <!--Import jQuery before materialize.js-->    
+    <script type="text/javascript" charset="utf-8" src="js/jquery-2.1.1.min.js"></script>       
+    <script type="text/javascript" charset="utf-8" src="js/angular.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/angular-route.min.js"></script>  
+    <script type="text/javascript" charset="utf-8" src="js/materialize.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/touchSwipe.js"></script>
+    <script type="text/javascript" charset="utf-8" src="controller/settingController.js"></script>
+    <script type="text/javascript" charset="utf-8" src="controller/CalculoController.js"></script>
+    <script type="text/javascript" charset="utf-8" src="controller/module.js"></script>    
+    <script type="text/javascript" charset="utf-8" src="js/script.js"></script>    
+  </body>
+</html>
