@@ -8,15 +8,14 @@ app.controller('calculo', function($scope,$timeout){
  
   	$scope.result={"estado":"", "valor":"","porcentaje_final": "","imagen":"","mensaje1":"","mensaje2":"","mensaje3":""};
 
-    $scope.save = function(notas) {
+  	$scope.save = function(notas) {
     	var size = Object.size($scope.notas.nota);
     	var sizep = Object.size($scope.notas.porcentaje);
-    	if(size==$scope.products.length){    		
+    	if(size==$scope.products.length &&  Object.evaluarNotas($scope.notas.nota)){    		
     		if(sizep==$scope.products.length){    			
 	    		var porcentaje = CalculoPorcentaje();
-	    		if(porcentaje>=0  && porcentaje<=100){
+	    		if(porcentaje>=0  && porcentaje<=100){	    			
 	    			$scope.result=$scope.set_calcular();
-	    			console.log($scope.result);
 	    			$('#modal').openModal();	    			
 	    		}else{
 	    			$scope.error={'estado':true,'mensaje':'El porcentaje debe de estar entre 0% y 100%'};
@@ -28,7 +27,7 @@ app.controller('calculo', function($scope,$timeout){
     			$('#active').trigger('click'); 
     		}    		
     	}else{
-    		$scope.error={'estado':true,'mensaje':'Debe ingresar las notas'};  
+    		$scope.error={'estado':true,'mensaje':'Debe ingresar las notas o los porcentajes'};  
     		$('#active').trigger('click');  
     	}    		
       	
@@ -45,7 +44,7 @@ app.controller('calculo', function($scope,$timeout){
     $scope.reset();
 
     $scope.addItem = function () { 
-    	if (typeof $scope.notas.nota!=="undefined") {
+    	if (typeof $scope.notas.nota!=="undefined" && Object.evaluarNotas($scope.notas.nota)) {
     		var porcentaje=CalculoPorcentaje();
     		var size = Object.size($scope.notas.nota);
     		var sizep = Object.size($scope.notas.porcentaje);
@@ -103,7 +102,7 @@ app.controller('calculo', function($scope,$timeout){
     $scope.notaprom100=function(){
     	var promedio=0;
     	angular.forEach($scope.notas.porcentaje, function(value, key) {
-			  promedio=promedio+(parseFloat($scope.notas.nota[key])*(parseFloat($scope.notas.porcentaje[key]*0.01)));			  
+			  promedio=promedio+(parseFloat($scope.notas.nota[key])*(parseFloat($scope.notas.porcentaje[key]*0.01)));			  			  
 		});
 		return promedio;
     } 
@@ -114,7 +113,26 @@ app.controller('calculo', function($scope,$timeout){
 			  porcentaje=parseInt(porcentaje)+parseInt(value);
 		});
 		return porcentaje;
-	}  
+	}  	
+
+	$scope.validarInput=function(index,mensaje,val,indice){
+		//var range = /^\d{1,2}(\.\d{1,3})?$/;
+		//var hundred = /^han$/;	
+		if (index !== undefined)
+			if((index>val)){
+				$scope.error={'estado':true,'mensaje':'Debe ingresar un rango entre 0 y 100%'}; 
+				$('#active').trigger('click'); 
+		};
+	}
+
+	$scope.evaluarNotas=function(){		
+		angular.forEach($scope.notas.notas, function(value, key) {
+			  if(value==undefined){			  	
+				return false;
+			  }
+		});
+		return true;
+	}  	
 
 	$scope.set_calcular =function ()
 	{
@@ -130,10 +148,13 @@ app.controller('calculo', function($scope,$timeout){
 		{
 			var valor_notas = 0;
 			var estado, mensaje1, mensaje2, mensaje3;
+			console.log($scope.notaprom100);
+
 			angular.forEach($scope.notas.porcentaje, function(value, key) {		
 				valor_notas +=( parseFloat($scope.notas.nota[key])*(parseFloat($scope.notas.porcentaje[key])/100));
 			});
 			valor_nota_final = Math.round( valor_notas * 100 ) / 100;
+			//valor_nota_final= valor_nota_final*0.1;
 			if ( valor_nota_final >4.4 ) 
 			{
 				estado = 'e';
@@ -184,7 +205,7 @@ app.controller('calculo', function($scope,$timeout){
 
 			valor_nota_final = ( 3 - valor_notas ) / ( porcentaje_restante / 100 );
 			valor_nota_final = Math.round( valor_nota_final * 100 ) / 100;
-
+			//valor_nota_final= valor_nota_final*0.1;
 			if ( valor_nota_final > 5 ) 
 			{
 				/*mal=0*/
@@ -219,7 +240,7 @@ app.controller('calculo', function($scope,$timeout){
 				imagen="img/excelente.jpg"
 				valor_nota_final = null;
 				mensaje1="Eres un genio.";
-				mensaje2="Debes sacar un ";
+				mensaje2="Ya ganaste la materia";
 				mensaje3="Deberias para trabajar en la NASA.";
 			}
 			porcentaje_restante = Math.round( porcentaje_restante * 100 ) / 100;
@@ -238,14 +259,21 @@ function toObject(arr) {
 
 Object.size = function(obj) {
     var size = 0, key;
-    for (key in obj) {
+    for (key in obj) {    	
         if (obj.hasOwnProperty(key)) 
         	size++;
     }
     return size;
 }
 
-
+Object.evaluarNotas = function(obj) {
+    var key;
+    for (key in obj) {    	
+        if(obj[key]==undefined)			  	
+			return false;			  
+    }
+    return true;
+}
 
 /*
 

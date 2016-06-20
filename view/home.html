@@ -10,18 +10,17 @@
 					      <div class="divider"></div>
 					      <form class="col s12" name="notasForm">
 						      <div class="row" ng-repeat="x in products">
-						        <div class="input-field col s5 m5 l6" style="width: 46%;">
-						          <input id="first_name" type="text" ng-model="notas.nota[$index]" name="nota[$index]" class="validate nota-{{$index}}" required onKeypress="if (event.keyCode < 47|| event.keyCode > 53) event.returnValue = false;"
-						           onchange="range = /^\d{1,2}(\.\d{1,3})?$/;hundred = /^5$/;if(!(range.test(this.value) || hundred.test(this.value)))alert('El rango debe ser entre 0 y 5');">
+						        <div class="input-field col s5 m5 l6 size-i">
+						          <input id="nota[$index]" type="text" ng-model="notas.nota[$index]" name="nota[$index]" class="validate nota-{{$index}}" required minlength="0" maxlength="4" required onKeypress="if (event.keyCode < 45|| event.keyCode > 57) event.returnValue = false;"						          
+						           ng-blur="validarInput(notas.nota[$index],'mal',5)">
 						          <label for="first_name">Nota</label>						          
 						        </div>
-						        <div class="input-field col s5 m5 l6" style="width: 46%;">
-						          <input id="last_name" type="text" ng-model="notas.porcentaje[$index]" name="porcentaje[$index]" class="validate porcentaje-{{$index}}" required minlength="0" maxlength="3" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
-						           onchange="range = /^\d{1,2}(\.\d{1,3})?$/;hundred = /^100$/;if(!(range.test(this.value) || hundred.test(this.value)))alert('El rango debe ser entre 0 y 100%');">					
+						        <div class="input-field col s5 m5 l6 size-i">
+						          <input id="last_name" type="text" ng-model="notas.porcentaje[$index]" name="porcentaje[$index]" class="validate porcentaje-{{$index}}" required minlength="0" maxlength="4" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" ng-blur="validarInput(notas.nota[$index],'mal',5)">					
 						          <label for="first_name">Porcentaje</label>
 						        </div>	
 						        <div class="input-field col s0 m0 l0" ng-init="id=$index" style="padding-top: 15px;">				        
-						        	<span ng-click="removeItem($index,id)" style="cursor:pointer;"><i class="material-icons waves-effect waves-light red-text text-darken-2">delete_forever</i></span>
+						        	<span class="position-icon" ng-click="removeItem($index,id)" style="cursor:pointer;"><i class="material-icons waves-effect waves-light red-text text-darken-2">delete_forever</i></span>
 					        	</div>
 						      </div>
 					      </form>	
@@ -79,13 +78,13 @@
 	      <div class="col s12 m8 offset-m2 l6 offset-l3">
 	        <div class="card-panel grey lighten-5 z-depth-1">
 	          <div class="row valign-wrapper">
-	            <div class="col s2">
-	              <img ng-src="{{result.imagen}}" alt="" class="circle responsive-img">
+	            <div class="col s2 position-icon-movil">
+	              <img ng-src="{{result.imagen}}" alt="" class="circle responsive-img movil-icon">
 	            </div>
 	            <div class="col s10">
 	              <span class="black-text">
               		<p><h4>{{result.mensaje1}}</h4></p>
-	      			<p>{{result.mensaje2}} {{result.valor}} en el {{result.porcentaje_final}}%</p>
+	      			<p>{{result.mensaje2}} {{result.valor}} en el {{result.porcentaje_final}}%</p>	      			
 	      			<p>{{result.mensaje3}}</p>
 	              </span>
 	            </div>

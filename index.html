@@ -22,16 +22,17 @@
               <li><a class="dropdown-button" href="#" data-activates="dropvalues">{{config.header.menu.item2.named}}<i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>                 
             <ul id="nav-mobile" class="side-nav">
+              <li><a ng-click="valor(true)" href="{{config.header.menu.title.urlt}}">Inicio</a></li> 
               <li><a ng-click="valor(false)" href="{{config.header.menu.item1.url1}}">{{config.header.menu.item1.name1}}</a></li>              
               <!-- Dropdown Trigger -->
               <li>
                 <ul class="collapsible" data-collapsible="accordion">
-                  <li>
+                  <li>                    
                     <div class="collapsible-header color">{{config.header.menu.item2.named}}<i class="material-icons right">arrow_drop_down</i></div>
                     <div class="collapsible-body">
                       <ul>
                         <div ng-repeat="attr in config.header.menu.drop">                        
-                          <li><a href="{{attr.url}}">{{attr.name}}</a></li>
+                          <li><a ng-click="valor(false)" href="{{attr.url}}">{{attr.name}}</a></li>
                           <li class="divider"></li>                      
                         </div>
                       </ul>
@@ -45,7 +46,7 @@
         </nav>
         <ul id="dropvalues" class="dropdown-content">
           <div ng-repeat="attr in config.header.menu.drop">                        
-            <li><a href="{{attr.url}}">{{attr.name}}</a></li>
+            <li><a ng-click="valor(false)" href="{{attr.url}}">{{attr.name}}</a></li>
             <li class="divider"></li>                      
           </div>
         </ul>             
@@ -60,6 +61,7 @@
             <div class="caption center-align">
               <h3>{{caru.text1}}</h3>
               <h5 class="light grey-text text-lighten-3">{{caru.text2}}</h5>
+              <a class="waves-effect waves-light btn-large btn-carousel" href="{{config.header.menu.item1.url1}}"><i class="material-icons right">cloud</i>Calcular</a>
             </div>
           </li> 
         </ul>

@@ -47,7 +47,7 @@ div.content-carousel{
     background-color:#001F3F !important; 
 }
 
-nav{
+nav, .btn-carousel{
     background-color:#0DA574 !important; 
 }
 
@@ -129,7 +129,7 @@ div.off-margin{
 }   
 
 .btnadd{
-    left: 45% !important;
+    left: 70% !important;
 }  
 
 .pos-input{
@@ -172,16 +172,39 @@ img.social-icon{
 	}
 
     .btnadd{
-        left: -20px;
+        left: -9px !important;
     } 
+
+    .size-i{
+        right: 17px;
+    }
+
+    .position-icon{ 
+        position: absolute;
+    }
+
+    .movil-icon{
+        max-width: 50px !important;
+    }
+
 } 
 
+@media (max-width: 520px){    
+    .position-icon-movil{
+        position: absolute;
+        right: 51px !important;
+        top: 32px;
+    }
+}
 
 @media (min-width: 1000px){
     .img-error{
         width: 80% !important;
     }
 
+    .size-i{
+        width: 46% !important;
+    }
     .activo{
         padding-left: 60px;
         margin-left: 80px;
